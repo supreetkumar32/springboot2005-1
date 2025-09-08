@@ -1,5 +1,7 @@
 package com.springbootweektwo.weektwo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 
 public class EmployeeDTO {
@@ -8,19 +10,19 @@ public class EmployeeDTO {
     private String email;
     private Integer age;
     private LocalDate dateOfJoining;
-    private Boolean isActive;
+    private Boolean activeEmployee;
 
     public EmployeeDTO(){
 
     }
 
-    public EmployeeDTO(Long id, String name, String email, Integer age, LocalDate dateOfJoining, Boolean isActive) {
+    public EmployeeDTO(Long id, String name, String email, Integer age, LocalDate dateOfJoining, Boolean activeEmployee) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
         this.dateOfJoining = dateOfJoining;
-        this.isActive = isActive;
+        this.activeEmployee = activeEmployee;
     }
 
     public String getName() {
@@ -63,11 +65,11 @@ public class EmployeeDTO {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public Boolean getActiveEmployee() {
+        return activeEmployee;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setActiveEmployee(Boolean active) {
+        activeEmployee = active;
     }
 }
