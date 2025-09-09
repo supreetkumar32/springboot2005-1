@@ -17,6 +17,8 @@ public class EmployeeEntity {
     private String name;
     private String email;
     private Integer age;
+    private String role;
+    private Double salary;
     private LocalDate dateOfJoining;
     private Boolean activeEmployee;
 
@@ -64,6 +66,23 @@ public class EmployeeEntity {
         return activeEmployee;
     }
 
-    public void setActiveEmployee(Boolean active) {activeEmployee = active;
+    public void setActiveEmployee(Boolean active) {
+        activeEmployee = active;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 }
