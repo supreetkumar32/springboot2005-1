@@ -2,6 +2,7 @@ package com.springbootweektwo.weektwo.controllers;
 
 import com.springbootweektwo.weektwo.dto.EmployeeDTO;
 import com.springbootweektwo.weektwo.entities.EmployeeEntity;
+import com.springbootweektwo.weektwo.exceptions.ResourceNotFoundException;
 import com.springbootweektwo.weektwo.repositories.EmployeeRepository;
 import com.springbootweektwo.weektwo.services.EmployeeService;
 import jakarta.validation.Valid;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -34,13 +36,17 @@ public class EmployeeController {
         Optional<EmployeeDTO> employeeDTO=employeeService.getEmployeeById(id);
         return employeeDTO
                 .map(employeeDTO1 -> ResponseEntity.ok(employeeDTO1))
-                .orElse(ResponseEntity.notFound().build());
+                .orElseThrow(()-> new ResourceNotFoundException("Employee not found with id: "+id));
     }
 
 //    @GetMapping
 //    public List<EmployeeDTO> getAllEmployees(@RequestParam(required=false) Integer age,
 //                                                @RequestParam(required=false) String sortBy){
 //        return employeeService.getAllEmployees();
+//    }
+//    @ExceptionHandler(NoSuchElementException.class)
+//    public ResponseEntity<String> handleEmployeeNotFound(NoSuchElementException exception){
+//       return new ResponseEntity<>("Employee not found",HttpStatus.NOT_FOUND);
 //    }
 
     @GetMapping
